@@ -1,0 +1,21 @@
+service:
+  name: test
+  webpackConfig: webpack/webpack.config.prod
+  config:
+    accountId: ${env:CLOUDFLARE_ACCOUNT_ID}
+    zoneId: ${env:CLOUDFLARE_ZONE_ID}
+
+provider:
+  name: cloudflare
+  stage: prod
+  environment:
+    CLOUDFLARE_AUTH_KEY: ${env:CLOUDFLARE_AUTH_KEY}
+    CLOUDFLARE_AUTH_EMAIL: ${env:CLOUDFLARE_AUTH_EMAIL}
+
+plugins:
+  - serverless-cloudflare-workers
+
+functions:
+  apiEntry:
+    name: app-api-prod
+    script: dist/worker.prod.js

@@ -1,0 +1,35 @@
+{
+  "name": "@heather-turano-coaching/api",
+  "private": true,
+  "version": "0.6.0",
+  "description": "TS Cloudflare serverless API router",
+  "main": "dist/worker.prod.js",
+  "scripts": {
+    "build": "webpack --config=webpack/webpack.config.js",
+    "dev": "build:dev --watch",
+    "start": "wrangler preview --watch",
+    "build:dev": "webpack --config=webpack/webpack.config.dev.js",
+    "build:prod": "webpack --config=webpack/webpack.config.prod.js",
+    "publish:dev": "source .env && npm run build:dev && wrangler publish",
+    "publish:prod": "source .env && npm run build:prod && wrangler publish --env=production",
+    "serverless:deploy": "source .env && serverless deploy",
+    "serverless:remove": "source .env && serverless remove"
+  },
+  "author": "Drew DeCarme <drewdecarme@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "query-string": "^6.10.1",
+    "ts-loader": "^6.2.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^1.0.7",
+    "@cloudflare/wrangler": "^1.8.4",
+    "@types/node": "^13.11.0",
+    "dotenv-webpack": "^1.7.0",
+    "serverless": "^1.67.0",
+    "serverless-cloudflare-workers": "^1.2.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

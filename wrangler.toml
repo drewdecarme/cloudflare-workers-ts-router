@@ -1,0 +1,15 @@
+# account_id & zone_id are configured using the .env file
+# CF_ACCOUNT_ID & CF_ZONE_ID & CF_API_KEY & CF_EMAIL all need to be set
+# https://developers.cloudflare.com/workers/tooling/wrangler/configuration#using-environment-variables
+
+name = "drewdecarme-dev"
+type = "webpack"
+account_id = "$CF_ACCOUNT_ID"
+zone_id = "$CF_ZONE_ID"
+webpack_config = "webpack/webpack.config.dev.js"
+workers_dev = true
+
+[env.production]
+name = "drewdecarme-prod"
+route = "https://api.drewdecarme.com/*"
+webpack_config = "webpack/webpack.config.prod.js"
